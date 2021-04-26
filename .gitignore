@@ -3,11 +3,6 @@ composer.lock
 .env
 log.txt
 /locales/*
-/wordpress/locales/*
-/wordpress/vendor
-/wordpress/vendor/
-/wordpress/close2.zip
-/wordpress/close2translate.zip
 /.phpunit.result.cache
 /tests/phpunit/files/**/*_expected
 /tests/phpunit/data.db
