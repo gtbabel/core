@@ -1,0 +1,25 @@
+{
+    "name": "vielhuber/gtbabel",
+    "description": "Instant PHP server-side translation.",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "vielhuber\\gtbabel\\": "src/"
+        },
+        "files": [
+            "helpers.php"
+        ]
+    },
+    "require": {
+        "gettext/gettext": "*",
+        "vlucas/phpdotenv": "*",
+        "cocur/slugify": "*",
+        "vielhuber/stringhelper": "*",
+        "vielhuber/dbhelper": "*",
+        "vielhuber/excelhelper": "*",
+        "symfony/polyfill-mbstring": "1.20.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    }
+}
