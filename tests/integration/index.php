@@ -1,15 +1,20 @@
 <?php
 require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
+use vielhuber\gtbabel\Gtbabel;
+use Dotenv\Dotenv;
+$dotenv = Dotenv::createImmutable(dirname(__DIR__, 2));
+$dotenv->load();
+$gtbabel = new Gtbabel();
 
 $test = 1;
 if ($test === 1) {
     $settings = [
         'de' => [
-            'url_base' => 'http://gtbabel.local.vielhuber.de',
+            'url_base' => $_SERVER['TEST_URL'],
             'url_prefix' => 'de'
         ],
         'en' => [
-            'url_base' => 'http://gtbabel.local.vielhuber.de',
+            'url_base' => $_SERVER['TEST_URL'],
             'url_prefix' => 'en'
         ]
     ];
@@ -17,11 +22,11 @@ if ($test === 1) {
 if ($test === 2) {
     $settings = [
         'de' => [
-            'url_base' => 'http://gtbabel.local.vielhuber.de',
+            'url_base' => $_SERVER['TEST_URL'],
             'url_prefix' => ''
         ],
         'en' => [
-            'url_base' => 'http://gtbabel.local.vielhuber.de',
+            'url_base' => $_SERVER['TEST_URL'],
             'url_prefix' => 'en'
         ]
     ];
@@ -29,11 +34,11 @@ if ($test === 2) {
 if ($test === 3) {
     $settings = [
         'de' => [
-            'url_base' => 'http://gtbabel.local.vielhuber.de',
+            'url_base' => $_SERVER['TEST_URL'],
             'url_prefix' => 'deutsch'
         ],
         'en' => [
-            'url_base' => 'http://gtbabel.local.vielhuber.de',
+            'url_base' => $_SERVER['TEST_URL'],
             'url_prefix' => 'english'
         ]
     ];
@@ -55,7 +60,7 @@ if ($test === 4) {
             '://' .
             $_SERVER['HTTP_HOST'] .
             $_SERVER['REQUEST_URI'] ===
-        'http://gtbabel.local.vielhuber.de/'
+        $_SERVER['TEST_URL']
     ) {
         header('Location: http://gtbabel-de.local.vielhuber.de');
         die();
@@ -64,11 +69,11 @@ if ($test === 4) {
 if ($test === 5) {
     $settings = [
         'de' => [
-            'url_base' => 'http://gtbabel.local.vielhuber.de/some/sub/path',
+            'url_base' => $_SERVER['TEST_URL'] . '/some/sub/path',
             'url_prefix' => 'de'
         ],
         'en' => [
-            'url_base' => 'http://gtbabel.local.vielhuber.de/some/sub/path',
+            'url_base' => $_SERVER['TEST_URL'] . '/some/sub/path',
             'url_prefix' => 'en'
         ]
     ];
@@ -78,30 +83,25 @@ if ($test === 5) {
             '://' .
             $_SERVER['HTTP_HOST'] .
             $_SERVER['REQUEST_URI'] ===
-        'http://gtbabel.local.vielhuber.de/'
+        $_SERVER['TEST_URL']
     ) {
-        header('Location: http://gtbabel.local.vielhuber.de/some/sub/path/');
+        header('Location: ' . $_SERVER['TEST_URL'] . '/some/sub/path/');
         die();
     }
 }
 if ($test === 6) {
     $settings = [
         'de' => [
-            'url_base' => 'http://gtbabel.local.vielhuber.de',
+            'url_base' => $_SERVER['TEST_URL'],
             'url_prefix' => ''
         ],
         'en' => [
-            'url_base' => 'http://gtbabel.local.vielhuber.de',
+            'url_base' => $_SERVER['TEST_URL'],
             'url_prefix' => ''
         ]
     ];
 }
 
-use vielhuber\gtbabel\Gtbabel;
-use Dotenv\Dotenv;
-$dotenv = Dotenv::createImmutable(dirname(__DIR__, 2));
-$dotenv->load();
-$gtbabel = new Gtbabel();
 $gtbabel->config([
     'languages' => [
         [

@@ -2108,11 +2108,17 @@ It can then accept and process common JSON request responses.
 
 ## Setup
 
-### Tests
+### Unit tests
 
 -   Copy `.env.example` to `.env` and fill in api credentials
 -   `composer install`
 -   `./vendor/bin/phpunit`
+
+### Integration tests
+
+-   Copy `.env.example` to `.env` and fill in test url
+-   Point vhost to `/tests/integration/index.php`
+-   Test in browser
 
 ### Build pipeline
 
