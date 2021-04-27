@@ -2103,6 +2103,11 @@ If you don't want to use the big three in translation, you can specify a special
 Gtbabel then fires a GET-request to that url and fills in the placeholders automatically.\
 It can then accept and process common JSON request responses.
 
+## Tests
+
+-   Copy `.env.example` to `.env` and fill in api credentials
+-   Run phpunit testsuite with `./vendor/bin/phpunit`
+
 ## Caveats
 
 -   Gtbabel is good at translating whole pages. If you want to provide different content for different languages, Gtbabel might be the wrong tool (however you _can_ use `if( gtbabel_current_lng() === 'other-lng' ) { echo 'content in source language'; }` and/or the concept of **Multiple source languages** in your templates to achieve that).
