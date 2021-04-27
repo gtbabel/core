@@ -39,6 +39,7 @@ Gtbabel automatically translates your HTML/PHP pages – server sided!
 -   [Google Translation API](#google-translation-api)
 -   [API usage costs](#api-usage-costs)
 -   [Custom translation providers](#custom-translation-providers)
+-   [Tests](#tests)
 -   [Caveats](#caveats)
 -   [Credits](#credits)
 
