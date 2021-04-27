@@ -1283,7 +1283,8 @@ class Dom
                 if (__::x($alt_lng)) {
                     $html_node = $this->DOMXPath->query('/html/head//title')[0];
                     if ($html_node !== null) {
-                        $html_node->setAttribute('class', 'notranslate');
+                        //$html_node->setAttribute('class', 'notranslate');
+                        $html_node->setAttribute('lang', $alt_lng);
                     }
                     $html_node = $this->DOMXPath->query('/html/head//meta[@name="description"][@content]')[0];
                     if ($html_node !== null) {
