@@ -39,7 +39,7 @@ Gtbabel automatically translates your HTML/PHP pages – server sided!
 -   [Google Translation API](#google-translation-api)
 -   [API usage costs](#api-usage-costs)
 -   [Custom translation providers](#custom-translation-providers)
--   [Setup](#setup)
+-   [Development setup](#development-setup)
     -   [Unit tests](#unit-tests)
     -   [Integration tests](#integration-tests)
     -   [Build pipeline](#build-pipeline)
@@ -2107,7 +2107,7 @@ If you don't want to use the big three in translation, you can specify a special
 Gtbabel then fires a GET-request to that url and fills in the placeholders automatically.\
 It can then accept and process common JSON request responses.
 
-## Setup
+## Development setup
 
 ### Unit tests
 
@@ -2118,7 +2118,7 @@ It can then accept and process common JSON request responses.
 ### Integration tests
 
 -   Copy `.env.example` to `.env` and fill in test url
--   Point vhost to `/tests/integration/index.php`
+-   Point vhost to `/tests/integration`
 -   Test in browser
 
 ### Build pipeline
