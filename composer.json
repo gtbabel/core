@@ -1,10 +1,10 @@
 {
-    "name": "vielhuber/gtbabel",
+    "name": "gtbabel/gtbabelcore",
     "description": "Instant PHP server-side translation.",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "vielhuber\\gtbabel\\": "src/"
+            "gtbabel\\gtbabelcore\\": "src/"
         },
         "files": [
             "helpers.php"

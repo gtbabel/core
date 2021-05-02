@@ -130,7 +130,7 @@
     ],
     "name": "gtbabel",
     "version": "1.0.0",
-    "description": "[![Build Status](https://travis-ci.org/vielhuber/gtbabel.svg?branch=master)](https://travis-ci.org/vielhuber/gtbabel)",
+    "description": "[![Build Status](https://travis-ci.org/gtbabel/gtbabelcore.svg?branch=master)](https://travis-ci.org/gtbabel/gtbabelcore)",
     "main": "index.js",
     "directories": {
         "test": "tests/phpunit"
@@ -138,12 +138,12 @@
     "dependencies": {},
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/vielhuber/gtbabel.git"
+        "url": "git+https://github.com/gtbabel/gtbabel-core.git"
     },
     "author": "",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/vielhuber/gtbabel/issues"
+        "url": "https://github.com/gtbabel/gtbabel-core/issues"
     },
-    "homepage": "https://github.com/vielhuber/gtbabel#readme"
+    "homepage": "https://github.com/gtbabel/gtbabel-core#readme"
 }

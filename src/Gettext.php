@@ -1,5 +1,5 @@
 <?php
-namespace vielhuber\gtbabel;
+namespace gtbabel\gtbabelcore;
 
 use Gettext\Translations;
 use Gettext\Translation;

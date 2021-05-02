@@ -1,5 +1,5 @@
 <?php
-namespace vielhuber\gtbabel;
+namespace gtbabel\gtbabelcore;
 
 use Cocur\Slugify\Slugify;
 

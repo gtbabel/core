@@ -1,5 +1,7 @@
 <?php
-use vielhuber\gtbabel\Gtbabel;
+namespace gtbabel\gtbabelcore;
+
+use gtbabel\gtbabelcore\Gtbabel;
 use vielhuber\stringhelper\__;
 use Dotenv\Dotenv;
 
@@ -28,39 +30,39 @@ class Test extends \PHPUnit\Framework\TestCase
 
     public function mock()
     {
-        $utils = $this->getMockBuilder(vielhuber\gtbabel\Utils::class)
+        $utils = $this->getMockBuilder(Utils::class)
             ->setConstructorArgs([])
             ->onlyMethods([])
             ->getMock();
-        $settings = $this->getMockBuilder(vielhuber\gtbabel\Settings::class)
+        $settings = $this->getMockBuilder(Settings::class)
             ->setConstructorArgs([$utils])
             ->onlyMethods([])
             ->getMock();
-        $log = $this->getMockBuilder(vielhuber\gtbabel\Log::class)
+        $log = $this->getMockBuilder(Log::class)
             ->setConstructorArgs([$utils, $settings])
             ->onlyMethods([])
             ->getMock();
-        $tags = $this->getMockBuilder(vielhuber\gtbabel\Tags::class)
+        $tags = $this->getMockBuilder(Tags::class)
             ->setConstructorArgs([$utils, $settings, $log])
             ->onlyMethods([])
             ->getMock();
-        $host = $this->getMockBuilder(vielhuber\gtbabel\Host::class)
+        $host = $this->getMockBuilder(Host::class)
             ->setConstructorArgs([$settings, $log])
             ->onlyMethods([])
             ->getMock();
-        $data = $this->getMockBuilder(vielhuber\gtbabel\Data::class)
+        $data = $this->getMockBuilder(Data::class)
             ->setConstructorArgs([$utils, $host, $settings, $tags, $log])
             ->onlyMethods([])
             ->getMock();
-        $grabber = $this->getMockBuilder(vielhuber\gtbabel\Grabber::class)
+        $grabber = $this->getMockBuilder(Grabber::class)
             ->setConstructorArgs([$settings, $utils, $log, $data])
             ->onlyMethods([])
             ->getMock();
-        $domfactory = $this->getMockBuilder(vielhuber\gtbabel\DomFactory::class)
+        $domfactory = $this->getMockBuilder(DomFactory::class)
             ->setConstructorArgs([$utils, $data, $host, $settings, $tags, $log])
             ->onlyMethods([])
             ->getMock();
-        $router = $this->getMockBuilder(vielhuber\gtbabel\Router::class)
+        $router = $this->getMockBuilder(Router::class)
             ->setConstructorArgs([$data, $host, $settings, $log, $utils])
             ->onlyMethods(['redirect'])
             ->getMock();
@@ -72,16 +74,16 @@ class Test extends \PHPUnit\Framework\TestCase
                     throw new \Exception($url);
                 })
             );
-        $gettext = $this->getMockBuilder(vielhuber\gtbabel\Gettext::class)
+        $gettext = $this->getMockBuilder(Gettext::class)
             ->setConstructorArgs([$data, $settings])
             ->onlyMethods([])
             ->getMock();
-        $excel = $this->getMockBuilder(vielhuber\gtbabel\Excel::class)
+        $excel = $this->getMockBuilder(Excel::class)
             ->setConstructorArgs([$data, $settings])
             ->onlyMethods([])
             ->getMock();
 
-        $this->gtbabel = $this->getMockBuilder(vielhuber\gtbabel\Gtbabel::class)
+        $this->gtbabel = $this->getMockBuilder(Gtbabel::class)
             ->setConstructorArgs([
                 $utils,
                 $settings,
