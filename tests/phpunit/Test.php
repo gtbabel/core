@@ -1,7 +1,7 @@
 <?php
-namespace gtbabel\gtbabelcore;
+namespace gtbabel\core;
 
-use gtbabel\gtbabelcore\Gtbabel;
+use gtbabel\core\Gtbabel;
 use vielhuber\stringhelper\__;
 use Dotenv\Dotenv;
 

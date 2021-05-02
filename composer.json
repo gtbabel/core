@@ -1,10 +1,10 @@
 {
-    "name": "gtbabel/gtbabelcore",
+    "name": "gtbabel/core",
     "description": "Instant PHP server-side translation.",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "gtbabel\\gtbabelcore\\": "src/"
+            "gtbabel\\core\\": "src/"
         },
         "files": [
             "helpers.php"

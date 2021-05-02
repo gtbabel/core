@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/gtbabel/gtbabelcore.svg?branch=master)](https://travis-ci.com/gtbabel/gtbabelcore)
+[![Build Status](https://travis-ci.com/gtbabel/core.svg?branch=master)](https://travis-ci.com/gtbabel/core)
 
 # 🌐 Gtbabel 🌐
 
@@ -87,14 +87,14 @@ Gtbabel automatically translates your HTML/PHP pages – server sided.
 Install once with [composer](https://getcomposer.org/):
 
 ```
-composer require gtbabel/gtbabelcore
+composer require gtbabel/core
 ```
 
 Then add this to your files:
 
 ```php
 require __DIR__ . '/vendor/autoload.php';
-use gtbabel\gtbabelcore\Gtbabel;
+use gtbabel\core\Gtbabel;
 ```
 
 ## Usage
