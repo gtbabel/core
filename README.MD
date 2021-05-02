@@ -2,7 +2,7 @@
 
 # 🌐 Gtbabel 🌐
 
-Gtbabel automatically translates your HTML/PHP pages – server sided!
+Gtbabel automatically translates your HTML/PHP pages – server sided.
 
 -   [Basic idea](#basic-idea)
 -   [Features](#features)
