@@ -62,7 +62,7 @@ Gtbabel automatically translates your HTML/PHP pages – server sided.
 -   Custom providers: Connect custom translation APIs
 -   Router included: spoof your request uri and let the magic happen, links are automatically converted (with slug collission detection).
 -   Helper functions for current language and all languages available.
--   Basic seo considered: title tags, seo descriptions, html lang attribute, hreflang tags included.
+-   Basic seo considered: title tags, seo descriptions, open graph tags, html lang attribute, hreflang tags included.
 -   RTL support: Adds a html dir attribute if language is rtl.
 -   WordPress plugin available.
 -   Prepared for translation management.
@@ -1252,6 +1252,30 @@ The default configuration is:
             'comment' => 'Canonical tags'
         ],
         [
+            'selector' => '/html/head//meta[@property="og:title"][@content]',
+            'attribute' => 'content',
+            'context' => 'title',
+            'comment' => 'Open Graph Tag'
+        ],
+        [
+            'selector' => '/html/head//meta[@property="og:site_name"][@content]',
+            'attribute' => 'content',
+            'context' => 'title',
+            'comment' => 'Open Graph Tag'
+        ],
+        [
+            'selector' => '/html/head//meta[@property="og:description"][@content]',
+            'attribute' => 'content',
+            'context' => null,
+            'comment' => 'Open Graph Tag'
+        ],
+        [
+            'selector' => '/html/head//meta[@property="og:url"][@content]',
+            'attribute' => 'content',
+            'context' => 'slug|file|url',
+            'comment' => 'Open Graph Tag'
+        ],
+        [
             'selector' => '/html/body//img[@src]',
             'attribute' => 'src',
             'context' => 'file',
@@ -1497,26 +1521,30 @@ Another way of doing this is using the `translate_wp_localize_script` option: Po
 
 By default Gtbabel translates all text and tag nodes with the following reasonable default rules:
 
-| css selector                    | text | attribute        | context                 |
-| ------------------------------- | ---- | ---------------- | ----------------------- |
-| `body *`                        | ✓    | ✗                | `auto`                  |
-| `body a`                        | ✗    | `href^="mailto"` | `email`                 |
-| `body a`                        | ✗    | `href`           | `'slug'\|'file'\|'url'` |
-| `body form`                     | ✗    | `action`         | `'slug'\|'file'\|'url'` |
-| `iframe`                        | ✗    | `src`            | `'slug'\|'file'\|'url'` |
-| `body img`                      | ✗    | `alt`            | `auto`                  |
-| `body *`                        | ✗    | `title`          | `auto`                  |
-| `body *`                        | ✗    | `placeholder`    | `auto`                  |
-| `body input[type="submit"]`     | ✗    | `value`          | `auto`                  |
-| `body input[type="reset"]`      | ✗    | `value`          | `auto`                  |
-| `head title`                    | ✓    | ✗                | `'title'`               |
-| `head meta[name="description"]` | ✗    | `content`        | `'description'`         |
-| `head link[rel="canonical"]`    | ✗    | `href`           | `'slug'`                |
-| `body img`                      | ✗    | `src`            | `'file'`                |
-| `body img`                      | ✗    | `srcset`         | `'file'`                |
-| `body *`                        | ✗    | `style`          | `'file'`                |
-| `body *`                        | ✗    | `label`          | `auto`                  |
-| `body *`                        | ✗    | `*text*`         | `auto`                  |
+| css selector                           | text | attribute        | context                 |
+| -------------------------------------- | ---- | ---------------- | ----------------------- |
+| `body *`                               | ✓    | ✗                | `auto`                  |
+| `body a`                               | ✗    | `href^="mailto"` | `email`                 |
+| `body a`                               | ✗    | `href`           | `'slug'\|'file'\|'url'` |
+| `body form`                            | ✗    | `action`         | `'slug'\|'file'\|'url'` |
+| `iframe`                               | ✗    | `src`            | `'slug'\|'file'\|'url'` |
+| `body img`                             | ✗    | `alt`            | `auto`                  |
+| `body *`                               | ✗    | `title`          | `auto`                  |
+| `body *`                               | ✗    | `placeholder`    | `auto`                  |
+| `body input[type="submit"]`            | ✗    | `value`          | `auto`                  |
+| `body input[type="reset"]`             | ✗    | `value`          | `auto`                  |
+| `head title`                           | ✓    | ✗                | `'title'`               |
+| `head meta[name="description"]`        | ✗    | `content`        | `'description'`         |
+| `head link[rel="canonical"]`           | ✗    | `href`           | `'slug'`                |
+| `head meta[property="og:title"]`       | ✗    | `content`        | `'title'`               |
+| `head meta[property="og:site_name"]`   | ✗    | `content`        | `'title'`               |
+| `head meta[property="og:description"]` | ✗    | `content`        | `'auto'`                |
+| `head meta[property="og:url"]`         | ✗    | `content`        | `'slug'\|'file'\|'url'` |
+| `body img`                             | ✗    | `src`            | `'file'`                |
+| `body img`                             | ✗    | `srcset`         | `'file'`                |
+| `body *`                               | ✗    | `style`          | `'file'`                |
+| `body *`                               | ✗    | `label`          | `auto`                  |
+| `body *`                               | ✗    | `*text*`         | `auto`                  |
 
 You can modify or add new tag node transformations via the `translate_html_include` option.
 

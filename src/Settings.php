@@ -486,6 +486,30 @@ class Settings
                 'comment' => 'Canonical tags'
             ],
             [
+                'selector' => '/html/head//meta[@property="og:title"][@content]',
+                'attribute' => 'content',
+                'context' => 'title',
+                'comment' => 'Open Graph Tag'
+            ],
+            [
+                'selector' => '/html/head//meta[@property="og:site_name"][@content]',
+                'attribute' => 'content',
+                'context' => 'title',
+                'comment' => 'Open Graph Tag'
+            ],
+            [
+                'selector' => '/html/head//meta[@property="og:description"][@content]',
+                'attribute' => 'content',
+                'context' => null,
+                'comment' => 'Open Graph Tag'
+            ],
+            [
+                'selector' => '/html/head//meta[@property="og:url"][@content]',
+                'attribute' => 'content',
+                'context' => 'slug|file|url',
+                'comment' => 'Open Graph Tag'
+            ],
+            [
                 'selector' => '/html/body//img[@src]',
                 'attribute' => 'src',
                 'context' => 'file',

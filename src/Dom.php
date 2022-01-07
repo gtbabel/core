@@ -512,6 +512,7 @@ class Dom
         $this->setupDomDocument($html);
         if ($mode === 'buffer') {
             $this->setHtmlLangTags();
+            $this->setOpenGraphLocale();
             $this->setRtlAttr();
             $this->doWordPressSpecificsBefore();
             $this->detectDomChangesFrontend();
@@ -605,6 +606,18 @@ class Dom
                     $head_node->appendChild($tag);
                 }
             }
+        }
+    }
+
+    function setOpenGraphLocale()
+    {
+        if (!$this->host->responseCodeIsSuccessful()) {
+            return;
+        }
+
+        $html_node = $this->DOMXPath->query('/html/head//meta[@property="og:locale"][@content]')[0];
+        if ($html_node !== null) {
+            $html_node->setAttribute('content', $this->data->getCurrentLanguageCode());
         }
     }
 

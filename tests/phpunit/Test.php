@@ -743,6 +743,11 @@ class Test extends \PHPUnit\Framework\TestCase
         $this->runDiff('82.html');
     }
 
+    public function test083()
+    {
+        $this->runDiff('83.html');
+    }
+
     public function test_string_detection()
     {
         $should_translate = ['Haus', 'Sending...', 'ब्लॉग'];
@@ -1406,19 +1411,15 @@ class Test extends \PHPUnit\Framework\TestCase
 
         $html_out = '';
         $html_out .=
-            '<a href="/en/search?foo=' .
-            urlencode('Cool thing') .
-            '&amp;baz=' .
-            urlencode('Richtig gut') .
-            '">here</a>';
+            '<a href="/en/seek?foo=' . urlencode('Cool thing') . '&amp;baz=' . urlencode('Richtig gut') . '">here</a>';
         $html_out .=
-            '<p>http://gtbabel.local.vielhuber.de/en/search?foo=' .
+            '<p>http://gtbabel.local.vielhuber.de/en/seek?foo=' .
             urlencode('Cool thing') .
             '&amp;baz=' .
             urlencode('Richtig gut') .
             '</p>';
         $html_out .=
-            '<a href="/en/search?foo=' .
+            '<a href="/en/seek?foo=' .
             urlencode('Cool thing') .
             '&amp;baz=' .
             urlencode('Richtig gut') .
@@ -1441,7 +1442,7 @@ class Test extends \PHPUnit\Framework\TestCase
         $this->assertEquals($translations[1]['str'], 'Coole Sache');
         $this->assertEquals($translations[1]['trans'], 'Cool thing');
         $this->assertEquals($translations[2]['str'], 'suche');
-        $this->assertEquals($translations[2]['trans'], 'search');
+        $this->assertEquals($translations[2]['trans'], 'seek');
 
         $this->gtbabel->reset();
     }
@@ -1486,7 +1487,7 @@ class Test extends \PHPUnit\Framework\TestCase
         $this->assertEquals($translations[1]['str'], 'Contenu en français.');
         $this->assertEquals($translations[1]['lng_source'], 'fr');
         $this->assertEquals($translations[1]['lng_target'], 'de');
-        $this->assertEquals($translations[1]['trans'], 'Inhalt in Französisch.');
+        $this->assertEquals($translations[1]['trans'], 'Inhalt auf Französisch.');
         $this->assertEquals($translations[2]['str'], 'Some other content in english.');
         $this->assertEquals($translations[2]['lng_source'], 'en');
         $this->assertEquals($translations[2]['lng_target'], 'de');
