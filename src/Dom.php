@@ -1294,14 +1294,20 @@ class Dom
             if (__::x($id)) {
                 $alt_lng = get_post_meta($id, 'gtbabel_alt_lng', true);
                 if (__::x($alt_lng)) {
-                    $html_node = $this->DOMXPath->query('/html/head//title')[0];
-                    if ($html_node !== null) {
-                        //$html_node->setAttribute('class', 'notranslate');
-                        $html_node->setAttribute('lang', $alt_lng);
-                    }
-                    $html_node = $this->DOMXPath->query('/html/head//meta[@name="description"][@content]')[0];
-                    if ($html_node !== null) {
-                        $html_node->setAttribute('lang', $alt_lng);
+                    foreach (
+                        [
+                            '/html/head//title',
+                            '/html/head//meta[@name="description"][@content]',
+                            '/html/head//meta[@property="og:title"][@content]',
+                            '/html/head//meta[@property="og:site_name"][@content]',
+                            '/html/head//meta[@property="og:description"][@content]'
+                        ]
+                        as $selectors__value
+                    ) {
+                        $html_node = $this->DOMXPath->query($selectors__value)[0];
+                        if ($html_node !== null) {
+                            $html_node->setAttribute('lang', $alt_lng);
+                        }
                     }
                 }
             }

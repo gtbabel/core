@@ -1266,7 +1266,7 @@ The default configuration is:
         [
             'selector' => '/html/head//meta[@property="og:description"][@content]',
             'attribute' => 'content',
-            'context' => null,
+            'context' => 'description',
             'comment' => 'Open Graph Tag'
         ],
         [
@@ -1538,7 +1538,7 @@ By default Gtbabel translates all text and tag nodes with the following reasonab
 | `head link[rel="canonical"]`           | ✗    | `href`           | `'slug'`                |
 | `head meta[property="og:title"]`       | ✗    | `content`        | `'title'`               |
 | `head meta[property="og:site_name"]`   | ✗    | `content`        | `'title'`               |
-| `head meta[property="og:description"]` | ✗    | `content`        | `'auto'`                |
+| `head meta[property="og:description"]` | ✗    | `content`        | `'description'`         |
 | `head meta[property="og:url"]`         | ✗    | `content`        | `'slug'\|'file'\|'url'` |
 | `body img`                             | ✗    | `src`            | `'file'`                |
 | `body img`                             | ✗    | `srcset`         | `'file'`                |

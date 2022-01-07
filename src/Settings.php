@@ -500,7 +500,7 @@ class Settings
             [
                 'selector' => '/html/head//meta[@property="og:description"][@content]',
                 'attribute' => 'content',
-                'context' => null,
+                'context' => 'description',
                 'comment' => 'Open Graph Tag'
             ],
             [
