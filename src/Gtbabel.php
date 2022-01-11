@@ -78,7 +78,8 @@ class Gtbabel
         if ($this->host->contentTypeIsInappropriate()) {
             return;
         }
-        $content = $this->domfactory->modifyContentFactory(ob_get_contents(), 'buffer');
+        $content = ob_get_contents();
+        $content = $this->domfactory->modifyContentFactory($content, 'buffer');
         ob_end_clean();
         echo $content;
         $this->data->saveCacheToDatabase();

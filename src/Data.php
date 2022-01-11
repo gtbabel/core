@@ -653,7 +653,7 @@ class Data
 
     function editTranslation(
         $str,
-        $context = null,
+        $context,
         $lng_source,
         $lng_target,
         $trans = null,
@@ -811,7 +811,7 @@ class Data
         return true;
     }
 
-    function editCheckedValue($str, $context = null, $lng_source, $lng_target, $checked)
+    function editCheckedValue($str, $context, $lng_source, $lng_target, $checked)
     {
         $this->db->query(
             'UPDATE ' .
