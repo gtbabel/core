@@ -522,6 +522,12 @@ class Settings
                 'comment' => 'Image srcset urls'
             ],
             [
+                'selector' => '/html/body//picture//source[@srcset]',
+                'attribute' => 'srcset',
+                'context' => 'file',
+                'comment' => 'Picture source srcset urls'
+            ],
+            [
                 'selector' => '/html/body//*[contains(@style, "url(")]',
                 'attribute' => 'style',
                 'context' => 'file',

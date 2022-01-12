@@ -1288,6 +1288,12 @@ The default configuration is:
             'comment' => 'Image srcset urls'
         ],
         [
+            'selector' => '/html/body//picture//source[@srcset]',
+            'attribute' => 'srcset',
+            'context' => 'file',
+            'comment' => 'Picture source srcset urls'
+        ],
+        [
             'selector' => '/html/body//*[contains(@style, "url(")]',
             'attribute' => 'style',
             'context' => 'file',
@@ -1542,6 +1548,7 @@ By default Gtbabel translates all text and tag nodes with the following reasonab
 | `head meta[property="og:url"]`         | ✗    | `content`        | `'slug'\|'file'\|'url'` |
 | `body img`                             | ✗    | `src`            | `'file'`                |
 | `body img`                             | ✗    | `srcset`         | `'file'`                |
+| `body picture source`                  | ✗    | `srcset`         | `'file'`                |
 | `body *`                               | ✗    | `style`          | `'file'`                |
 | `body *`                               | ✗    | `label`          | `auto`                  |
 | `body *`                               | ✗    | `*text*`         | `auto`                  |

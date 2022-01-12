@@ -1829,6 +1829,11 @@ class Test extends \PHPUnit\Framework\TestCase
     src="http://test.de/900x200.png?text=fallback"
     alt=""
 />
+<picture>
+    <source media="(max-width: 800px)" srcset="http://gtbabel.local.vielhuber.de/320x100.png?text=small">
+    <source media="(max-width: 1200px)" srcset="http://gtbabel.local.vielhuber.de/600x100.png?text=medium">
+    <img src="http://gtbabel.local.vielhuber.de/900x100.png?text=large" alt="" />
+</picture>
 <a href="mailto:"></a>
 <a href="mailto:david@vielhuber.de"></a>
 <a href="mailto:david@vielhuber.de?subject=Haus&amp;body=Dies%20ist%20ein%20Test"></a>
@@ -1868,6 +1873,7 @@ EOD;
 <img src="beispiel-bilddatei8_EN.jpg" alt="">
 <img srcset="http://gtbabel.local.vielhuber.de/320x100_EN.png?text=small, http://gtbabel.local.vielhuber.de/600x100_EN.png?text=medium 600w, http://gtbabel.local.vielhuber.de/900x100_EN.png?text=large 2x" src="http://gtbabel.local.vielhuber.de/900x200_EN.png?text=fallback" alt="" />
 <img srcset="http://gtbabel.local.vielhuber.de/320x100_EN.png?text=small, http://test.de/600x100.png?text=medium 600w, http://gtbabel.local.vielhuber.de/900x100_EN.png?text=large 2x" src="http://test.de/900x200.png?text=fallback" alt="" />
+<picture><source media="(max-width: 800px)" srcset="http://gtbabel.local.vielhuber.de/320x100_EN.png?text=small"><source media="(max-width: 1200px)" srcset="http://gtbabel.local.vielhuber.de/600x100_EN.png?text=medium"><img src="http://gtbabel.local.vielhuber.de/900x100_EN.png?text=large" alt=""></picture>
 <a href="mailto:"></a>
 <a href="mailto:david@vielhuber.de_EN"></a>
 <a href="mailto:david@vielhuber.de_EN?subject=House&amp;body=This%20is%20a%20test"></a>
