@@ -1207,7 +1207,7 @@ class Data
         &$meta = []
     ) {
         $orig = str_replace(' ', ' ', $orig); // replace hidden &nbsp; chars
-        $delimiters = ['|', '·', '•', '>', '-', '–', '—', ':', '*', '⋆', '~', '«', '»', '<'];
+        $delimiters = ['//', '|', '·', '•', '>', '-', '–', '—', ':', '*', '⋆', '~', '«', '»', '<'];
         $delimiters_encoded = [];
         foreach ($delimiters as $delimiters__value) {
             $delimiters_encoded[] = htmlentities($delimiters__value);
