@@ -1955,14 +1955,14 @@ gtbabel_languagepicker() // [['code' => 'de', 'label' => 'Deutsch', 'url' => 'ht
 gtbabel__('Hallo') // 'Hi there'
 ```
 
-As you can see, these helper functions are static functions, so in a normal environment route based settings are derived every time you call these functions and every time implicitly a new instance of Gtbabel is created.
+As you can see, these helper functions are static functions, so in a normal environment route based settings are derived when you call these functions and every time implicitly a new instance of Gtbabel is created.
 However, if you want to use a previous instance again, declare it as `global`:
 
 ```php
 global $gtbabel;
 $gtbabel = new Gtbabel();
 $gtbabel->config(['lng_source' => 'de', 'lng_target' => 'ar');
-gtbabel__('Hallo') // مرحبا
+gtbabel__('Hallo'); // مرحبا
 ```
 
 ## Echoing strings
@@ -1972,7 +1972,6 @@ Don't use `gtbabel__()` in your templates for echoing strings, just output them 
 One example would be a dynamically generated facebook share link, where Gtbabels parser is powerless. You can help out with:
 
 ```php
-<?php
 $url = gtbabel__('https://gtbabel.com');
 echo '<a href="https://www.facebook.com/sharer/sharer.php?u='.urlencode($url).'">Facebook</a>';
 ```
