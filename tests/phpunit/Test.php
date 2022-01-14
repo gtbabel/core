@@ -26,6 +26,10 @@ class Test extends \PHPUnit\Framework\TestCase
         } else {
             $this->mock();
         }
+
+        // allow helper functions to use same instance
+        global $gtbabel;
+        $gtbabel = $this->gtbabel;
     }
 
     public function mock()
@@ -751,6 +755,11 @@ class Test extends \PHPUnit\Framework\TestCase
     public function test084()
     {
         $this->runDiff('84.html');
+    }
+
+    public function test085()
+    {
+        $this->runDiff('85.php');
     }
 
     public function test_string_detection()
