@@ -1149,7 +1149,6 @@ class Dom
                 '(\/.+)?$/';
             if (preg_match($regex, trim($url, '/'))) {
                 $keys = $translate_json_include__value['selector'];
-                break;
             }
         }
         if (empty($keys)) {

@@ -2720,7 +2720,8 @@ EOD;
             'localize_js' => false,
             'detect_dom_changes' => false,
             'frontend_editor' => false,
-            'wp_mail_notifications' => false
+            'wp_mail_notifications' => false,
+            'translate_wp_mail' => true
         ];
     }
 

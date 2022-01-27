@@ -1404,7 +1404,8 @@ The default configuration is:
     ],
     'discovery_log' => false,
     'frontend_editor' => false, // common wordpress configuration: 'frontend_editor' => user_is_logged_in()
-    'wp_mail_notifications' => false
+    'wp_mail_notifications' => false,
+    'translate_wp_mail' => true
 ];
 ```
 
@@ -1973,7 +1974,7 @@ One example would be a dynamically generated facebook share link, where Gtbabels
 
 ```php
 $url = gtbabel__('https://gtbabel.com');
-echo '<a href="https://www.facebook.com/sharer/sharer.php?u='.urlencode($url).'">Facebook</a>';
+echo '<a href="https://www.facebook.com/sharer/sharer.php?u=' . urlencode($url) . '">Facebook</a>';
 ```
 
 You also can set the target and source language manually to get some specific translation. Because translations are not injective, the following two calls create two database entries (with different source languages):
