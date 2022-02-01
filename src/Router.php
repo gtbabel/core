@@ -87,7 +87,7 @@ class Router
             return;
         }
 
-        $this->redirect($url, @$_SERVER['REQUEST_METHOD'] === 'POST' ? 307 : 302); // 307 forces the browser to repost to the new url
+        $this->redirect($url, @$_SERVER['REQUEST_METHOD'] === 'POST' ? 307 : 301); // 307 forces the browser to repost to the new url
     }
 
     function initMagicRouter()
