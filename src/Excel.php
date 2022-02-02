@@ -107,7 +107,22 @@ class Excel
             $str = $translations__value[0];
             $trans = $translations__value[1];
             $context = $translations__value[2];
-            $this->data->editTranslation($str, $context, $lng_source, $lng_target, $trans);
+
+            $this->data->editTranslation(
+                $str,
+                $context,
+                $lng_source,
+                $lng_target,
+                $trans,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                true
+            );
         }
     }
 }

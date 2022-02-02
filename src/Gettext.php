@@ -181,7 +181,8 @@ class Gettext
                 $discovered_last_time,
                 $discovered_last_url_orig,
                 $discovered_last_url,
-                $translated_by
+                $translated_by,
+                true
             );
         }
     }

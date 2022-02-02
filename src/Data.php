@@ -663,7 +663,8 @@ class Data
         $discovered_last_time = null,
         $discovered_last_url_orig = null,
         $discovered_last_url = null,
-        $translated_by = null
+        $translated_by = null,
+        $update_only = false
     ) {
         $success = false;
 
@@ -702,6 +703,10 @@ class Data
             $lng_source,
             $lng_target
         );
+
+        if ($update_only === true && empty($gettext)) {
+            return false;
+        }
 
         if (!empty($gettext)) {
             // delete
