@@ -134,7 +134,6 @@ class Gettext
 
     function import($filename, $lng_source, $lng_target)
     {
-        $this->data->clearTable($lng_source, $lng_target);
         $loader = new PoLoader();
         $translations = $loader->loadFile($filename);
         foreach ($translations as $translations__value) {

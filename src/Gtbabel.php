@@ -57,7 +57,10 @@ class Gtbabel
         if ($this->host->contentTranslationIsDisabledForCurrentUrl()) {
             return;
         }
-        if ($this->host->contentTypeIsInappropriate()) {
+        if ($this->host->requestContentTypeIsInappropriate()) {
+            return;
+        }
+        if ($this->host->responseContentTypeIsInappropriate()) {
             return;
         }
         $this->router->handleRedirects();
@@ -75,7 +78,10 @@ class Gtbabel
         if ($this->host->contentTranslationIsDisabledForCurrentUrl()) {
             return;
         }
-        if ($this->host->contentTypeIsInappropriate()) {
+        if ($this->host->requestContentTypeIsInappropriate()) {
+            return;
+        }
+        if ($this->host->responseContentTypeIsInappropriate()) {
             return;
         }
         $content = ob_get_contents();

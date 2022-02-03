@@ -1207,10 +1207,10 @@ class Test extends \PHPUnit\Framework\TestCase
 <html>
     <head>
         <title>A review by Haus</title>
-        <meta name="description" content="I\'m reading Haus right now.">
+        <meta name="description" content="I\'m currently reading Haus.">
     </head>
     <body>
-        <a href="#" title="Haus">The link https://test.de is about the stop word Haus and more can be found on https://test2.de.</a>
+        <a href="#" title="Haus">The link https://test.de deals with the stop word Haus and more can be found on https://test2.de.</a>
     </body>
 </html>')
             )
@@ -1269,15 +1269,15 @@ class Test extends \PHPUnit\Framework\TestCase
             ],
             [
                 '<p><small class="_1">Haus</small> <span class="_2">Maus</span> Haus <u class="_4">Maus</u> <em class="_5">Haus</em></p>',
-                '<p><small class="_1">House</small> <span class="_2">mouse</span> house <u class="_4">mouse</u> <em class="_5">house</em></p>',
+                '<p><small class="_1">house</small> <span class="_2">mouse</span> house <u class="_4">mouse</u> <em class="_5">house</em></p>',
                 '<small>Haus</small> <span>Maus</span> Haus <u>Maus</u> <em>Haus</em>',
-                '<small>House</small> <span>mouse</span> house <u>mouse</u> <em>house</em>'
+                '<small>house</small> <span>mouse</span> house <u>mouse</u> <em>house</em>'
             ],
             [
                 '<p><small class="_1">Haus</small> <span class="_2">Maus</span> Haus <small class="_4">Maus</small> <span class="_5">Haus</span></p>',
-                '<p><small class="_1">House</small> <span class="_2">mouse</span> house <small class="_4">mouse</small> <span class="_5">house</span></p>',
+                '<p><small class="_1">house</small> <span class="_2">mouse</span> house <small class="_4">mouse</small> <span class="_5">house</span></p>',
                 '<small>Haus</small> <span>Maus</span> Haus <small>Maus</small> <span>Haus</span>',
-                '<small>House</small> <span>mouse</span> house <small>mouse</small> <span>house</span>'
+                '<small>house</small> <span>mouse</span> house <small>mouse</small> <span>house</span>'
             ],
             [
                 '<p>Das deutsche <strong data-foo="bar" class="notranslate">Brot</strong> <a href="#test1" target="_blank">vermisse</a> <a href="#test2" target="_self">ich</a> am <small style="font-size:bold;">meisten</small></p>',
@@ -1339,8 +1339,8 @@ class Test extends \PHPUnit\Framework\TestCase
                 '<p>foo &amp; bar<br> baz</p>' .
                 '<div data-text=\'"gnarr" &amp; gnazz\'></div>' .
                 '<a href="https://www.url.com/foo.php?lang=de&amp;foo=bar"></a>' .
-                '<img src="" alt="First &amp; test" data-text="Second &amp; test">' .
-                '<img src="" alt="First &amp; test" data-text="Second &amp; test">'
+                '<img src="" alt="First &amp; Trial" data-text="Second &amp; Trial">' .
+                '<img src="" alt="First &amp; Trial" data-text="Second &amp; Trial">'
         );
         $this->assertEquals(count($translations), 6);
         $this->assertEquals($translations[0]['str'], '#allesfürdich');
@@ -1497,7 +1497,7 @@ class Test extends \PHPUnit\Framework\TestCase
         $this->assertEquals($translations[0]['str'], 'Some content in english.');
         $this->assertEquals($translations[0]['lng_source'], 'en');
         $this->assertEquals($translations[0]['lng_target'], 'de');
-        $this->assertEquals($translations[0]['trans'], 'Einige Inhalte in Englisch.');
+        $this->assertEquals($translations[0]['trans'], 'Einige Inhalte auf Englisch.');
         $this->assertEquals($translations[1]['str'], 'Contenu en français.');
         $this->assertEquals($translations[1]['lng_source'], 'fr');
         $this->assertEquals($translations[1]['lng_target'], 'de');
@@ -1576,10 +1576,11 @@ class Test extends \PHPUnit\Framework\TestCase
         $this->gtbabel->gettext->import($files[2], 'en', 'de');
         $this->gtbabel->gettext->import($files[6], 'fr', 'de');
         $data2 = $this->gtbabel->data->getGroupedTranslationsFromDatabase()['data'];
+
         $this->assertEquals($data1, $data2);
         $this->assertEquals(strpos(file_get_contents($files[2]), 'msgid "Some content in english."') !== false, true);
         $this->assertEquals(
-            strpos(file_get_contents($files[2]), 'msgstr "Einige Inhalte in Englisch."') !== false,
+            strpos(file_get_contents($files[2]), 'msgstr "Einige Inhalte auf Englisch."') !== false,
             true
         );
 
@@ -1618,11 +1619,12 @@ class Test extends \PHPUnit\Framework\TestCase
         ob_start();
         $this->gtbabel->config($settings);
         $this->gtbabel->start();
-        echo '<!DOCTYPE html><html lang="de"><body><p>Some content in english.</p></body></html>';
+        echo '<!DOCTYPE html><html lang="de"><body><p>Einiger Content auf Deutsch.</p></body></html>';
         $this->gtbabel->stop();
+        $output = ob_get_contents();
         ob_end_clean();
         $this->assertSame($this->gtbabel->data->statsGetTranslatedCharsByService()[0]['service'], 'google');
-        $this->assertSame($this->gtbabel->data->statsGetTranslatedCharsByService()[0]['length'], 24);
+        $this->assertSame($this->gtbabel->data->statsGetTranslatedCharsByService()[0]['length'], 28);
 
         $this->gtbabel->reset();
 
@@ -1640,11 +1642,12 @@ class Test extends \PHPUnit\Framework\TestCase
         ob_start();
         $this->gtbabel->config($settings);
         $this->gtbabel->start();
-        echo '<!DOCTYPE html><html lang="de"><body><p>Some content in english.</p><p>Some content in english.</p></body></html>';
+        echo '<!DOCTYPE html><html lang="de"><body><p>Einiger Content auf Deutsch.</p><p>Einiger Content auf Deutsch.</p></body></html>';
         $this->gtbabel->stop();
+        $output = ob_get_contents();
         ob_end_clean();
         $this->assertSame($this->gtbabel->data->statsGetTranslatedCharsByService()[0]['service'], 'google');
-        $this->assertSame($this->gtbabel->data->statsGetTranslatedCharsByService()[0]['length'], 24);
+        $this->assertSame($this->gtbabel->data->statsGetTranslatedCharsByService()[0]['length'], 28);
         $this->gtbabel->reset();
 
         $settings['auto_translation_service'] = [
@@ -1661,11 +1664,12 @@ class Test extends \PHPUnit\Framework\TestCase
         ob_start();
         $this->gtbabel->config($settings);
         $this->gtbabel->start();
-        echo '<!DOCTYPE html><html lang="de"><body><p>Some content in english.</p><p>Some content in english.</p></body></html>';
+        echo '<!DOCTYPE html><html lang="de"><body><p>Einiger Content auf Deutsch.</p><p>Einiger Content auf Deutsch.</p></body></html>';
         $this->gtbabel->stop();
+        $output = ob_get_contents();
         ob_end_clean();
         $this->assertSame($this->gtbabel->data->statsGetTranslatedCharsByService()[0]['service'], 'microsoft');
-        $this->assertSame($this->gtbabel->data->statsGetTranslatedCharsByService()[0]['length'], 24);
+        $this->assertSame($this->gtbabel->data->statsGetTranslatedCharsByService()[0]['length'], 28);
         $this->gtbabel->reset();
 
         $settings['auto_translation_service'] = [
@@ -1682,11 +1686,12 @@ class Test extends \PHPUnit\Framework\TestCase
         ob_start();
         $this->gtbabel->config($settings);
         $this->gtbabel->start();
-        echo '<!DOCTYPE html><html lang="de"><body><p>Some content in english.</p><p>Other content in english.</p></body></html>';
+        echo '<!DOCTYPE html><html lang="de"><body><p>Einiger Content auf Deutsch.</p><p>Anderer Content auf Deutsch.</p></body></html>';
         $this->gtbabel->stop();
+        $output = ob_get_contents();
         ob_end_clean();
         $this->assertSame($this->gtbabel->data->statsGetTranslatedCharsByService()[0]['service'], 'microsoft');
-        $this->assertSame($this->gtbabel->data->statsGetTranslatedCharsByService()[0]['length'], 49);
+        $this->assertSame($this->gtbabel->data->statsGetTranslatedCharsByService()[0]['length'], 56);
         $this->gtbabel->reset();
 
         $settings['auto_translation_service'] = [
@@ -1703,8 +1708,9 @@ class Test extends \PHPUnit\Framework\TestCase
         ob_start();
         $this->gtbabel->config($settings);
         $this->gtbabel->start();
-        echo '<!DOCTYPE html><html lang="de"><body><p>Some content in english.</p></body></html>';
+        echo '<!DOCTYPE html><html lang="de"><body><p>Einiger Content auf Deutsch.</p></body></html>';
         $this->gtbabel->stop();
+        $output = ob_get_contents();
         ob_end_clean();
         $this->assertSame($this->gtbabel->data->statsGetTranslatedCharsByService()[0]['service'], 'deepl');
         $this->assertSame($this->gtbabel->data->statsGetTranslatedCharsByService()[0]['length'], 24);
@@ -1758,7 +1764,7 @@ class Test extends \PHPUnit\Framework\TestCase
         ob_start();
         $this->gtbabel->config($settings);
         $this->gtbabel->start();
-        echo '<!DOCTYPE html><html><body><p>Einige Inhalte in Englisch.</p><p>Einige andere Inhalte in Englisch.</p></body></html>';
+        echo '<!DOCTYPE html><html><body><p>Einige Inhalte auf Englisch.</p><p>Einige andere Inhalte in Englisch.</p></body></html>';
         $this->gtbabel->stop();
         $output = ob_get_contents();
         ob_end_clean();
@@ -1786,7 +1792,7 @@ class Test extends \PHPUnit\Framework\TestCase
         ob_start();
         $this->gtbabel->config($settings);
         $this->gtbabel->start();
-        echo '<!DOCTYPE html><html><body><p>Einige Inhalte in Englisch.</p><p>Einige andere Inhalte in Englisch.</p></body></html>';
+        echo '<!DOCTYPE html><html><body><p>Einige Inhalte auf Englisch.</p><p>Einige andere Inhalte in Englisch.</p></body></html>';
         $this->gtbabel->stop();
         $output = ob_get_contents();
         ob_end_clean();

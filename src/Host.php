@@ -99,7 +99,7 @@ class Host
         return $this->original_host;
     }
 
-    function getContentType()
+    function getRequestContentType()
     {
         if (isset($_SERVER['CONTENT_TYPE'])) {
             return $_SERVER['CONTENT_TYPE'];
@@ -110,9 +110,27 @@ class Host
         return null;
     }
 
-    function contentTypeIsInappropriate()
+    function getResponseContentType()
     {
-        $type = $this->getContentType();
+        $headers = headers_list();
+        if (!empty($headers)) {
+            foreach ($headers as $headers__value) {
+                if (stripos($headers__value, 'Content-Type:') !== false) {
+                    $content_type = explode(':', $headers__value)[1];
+                    if (strpos($content_type, ';') !== false) {
+                        return trim(explode(';', $content_type)[0]);
+                    }
+                    return trim($content_type);
+                    break;
+                }
+            }
+        }
+        return null;
+    }
+
+    function requestContentTypeIsInappropriate()
+    {
+        $type = $this->getRequestContentType();
         if ($type == '') {
             return false;
         }
@@ -141,6 +159,18 @@ class Host
             return false;
         }
         return true;
+    }
+
+    function responseContentTypeIsInappropriate()
+    {
+        $type = $this->getResponseContentType();
+        if ($type == '') {
+            return false;
+        }
+        if (strpos($type, 'text/plain') !== false) {
+            return true;
+        }
+        return false;
     }
 
     function contentTranslationIsDisabledForCurrentUrl()

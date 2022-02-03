@@ -1703,7 +1703,7 @@ This all gets translated correctly to the target language (in our case `de`):
 <!DOCTYPE html>
 <html lang="de">
     <body>
-        <p>Einige Inhalte in Englisch.</p>
+        <p>Einige Inhalte auf Englisch.</p>
         <div>Inhalt auf Französisch.</div>
         <p>Einige andere Inhalte in Englisch.</p>
     </body>
