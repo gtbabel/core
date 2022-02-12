@@ -2547,7 +2547,7 @@ class Data
     function statsGetCosts($service, $length)
     {
         if ($service === 'google') {
-            return round($length * (20 / 1000000) * 0.92, 2);
+            return round($length * (20 / 1000000) * 0.88, 2);
         }
         if ($service === 'microsoft') {
             return round($length * (8.433 / 1000000), 2);
