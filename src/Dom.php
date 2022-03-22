@@ -1464,10 +1464,6 @@ class Dom
         if (!$this->host->responseCodeIsSuccessful()) {
             return;
         }
-        // hide on elementor backend
-        if ($this->utils->isWordPress() && isset($_GET['elementor-preview']) && $_GET['elementor-preview'] != '') {
-            return;
-        }
         $head = $this->DOMXPath->query('/html/head')[0];
         $body = $this->DOMXPath->query('/html/body')[0];
         if ($head === null || $body === null) {

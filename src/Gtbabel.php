@@ -63,6 +63,9 @@ class Gtbabel
         if ($this->host->responseContentTypeIsInappropriate()) {
             return;
         }
+        if ($this->utils->isWordPress() && isset($_GET['elementor-preview']) && $_GET['elementor-preview'] != '') {
+            return;
+        }
         $this->router->handleRedirects();
         $this->router->initMagicRouter();
         $this->data->addCurrentUrlToTranslations();
@@ -82,6 +85,9 @@ class Gtbabel
             return;
         }
         if ($this->host->responseContentTypeIsInappropriate()) {
+            return;
+        }
+        if ($this->utils->isWordPress() && isset($_GET['elementor-preview']) && $_GET['elementor-preview'] != '') {
             return;
         }
         $content = ob_get_contents();
