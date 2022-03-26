@@ -63,7 +63,12 @@ class Gtbabel
         if ($this->host->responseContentTypeIsInappropriate()) {
             return;
         }
+        // elementor
         if ($this->utils->isWordPress() && isset($_GET['elementor-preview']) && $_GET['elementor-preview'] != '') {
+            return;
+        }
+        // divi
+        if ($this->utils->isWordPress() && isset($_GET['et_fb']) && $_GET['et_fb'] != '') {
             return;
         }
         $this->router->handleRedirects();
@@ -88,6 +93,9 @@ class Gtbabel
             return;
         }
         if ($this->utils->isWordPress() && isset($_GET['elementor-preview']) && $_GET['elementor-preview'] != '') {
+            return;
+        }
+        if ($this->utils->isWordPress() && isset($_GET['et_fb']) && $_GET['et_fb'] != '') {
             return;
         }
         $content = ob_get_contents();

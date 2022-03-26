@@ -249,7 +249,7 @@ class Settings
                 ['selector' => '[data-context]', 'attribute' => 'data-context', 'comment' => 'Data context attributes'],
                 ['selector' => '.lngpicker', 'comment' => 'Language picker'],
                 ['selector' => '.xdebug-error', 'comment' => 'Xdebug errors'],
-                ['selector' => '#wpadminbar', 'attribute' => 'data-text', 'comment' => 'WordPress adminbar'],
+                ['selector' => '#wpadminbar', 'comment' => 'WordPress adminbar'],
                 ['selector' => '#comments .comment-content', 'comment' => 'WordPress comments'],
                 ['selector' => '.page-title .search-term', 'comment' => 'WordPress search term'],
                 ['selector' => '.screen-reader-text', 'comment' => 'WordPress screen reader text'],
