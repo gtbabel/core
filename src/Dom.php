@@ -1473,7 +1473,8 @@ class Dom
         if ($lng !== null && $this->utils->isWordPress() && !current_user_can('gtbabel__translate_' . $lng)) {
             return;
         }
-        $url = $this->host->getCurrentUrl();
+        $url = $this->host->getCurrentUrlWithArgs();
+        $url = __::filter_url_args($url, ['gtbabel_frontend_editor']);
         $html = '';
         $html .= '<ul class="gtbabel-frontend-editor-links notranslate">';
         $html .= '<li class="gtbabel-frontend-editor-links__item">';
