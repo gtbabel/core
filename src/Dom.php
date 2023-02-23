@@ -1423,6 +1423,35 @@ class Dom
                 );
             }
         }
+        $nodes = $this->DOMXPath->query('/html/body//a[@href="#gtbabel_languagepicker_flat"]');
+        if (count($nodes) > 0) {
+            foreach ($nodes as $nodes__value) {
+                $data = $this->data->getLanguagePickerData(true, null, true);
+                $parent = $nodes__value->parentNode;
+                $html = '';
+                foreach ($data as $data__value) {
+                    $html .= '<li class="'.$parent->getAttribute('class').'">';
+                    $link_class = [];
+                    if ($data__value['active']) {
+                        $link_class[] = 'active';
+                    }
+                    $html .=
+                        '<a href="' .
+                        $data__value['url'] .
+                        '"' .
+                        (!empty($link_class) ? ' class="' . implode(' ', $link_class) . '"' : '') .
+                        '>';
+                    $html .= $data__value['label'];
+                    $html .= '</a>';
+                    $html .= '</li>';
+                }
+                $this->insertAfter(
+                    $parent,
+                    $this->stringToNode($html)
+                );
+                $parent->parentNode->removeChild($parent);
+            }
+        }
     }
 
     function showSimpleLanguagePicker()
