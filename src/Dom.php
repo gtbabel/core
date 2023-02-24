@@ -1430,7 +1430,7 @@ class Dom
                 $parent = $nodes__value->parentNode;
                 $html = '';
                 foreach ($data as $data__value) {
-                    $html .= '<li class="'.$parent->getAttribute('class').'">';
+                    $html .= '<li class="' . $parent->getAttribute('class') . ' notranslate">';
                     $link_class = [];
                     if ($data__value['active']) {
                         $link_class[] = 'active';
@@ -1445,10 +1445,7 @@ class Dom
                     $html .= '</a>';
                     $html .= '</li>';
                 }
-                $this->insertAfter(
-                    $parent,
-                    $this->stringToNode($html)
-                );
+                $this->insertAfter($parent, $this->stringToNode($html));
                 $parent->parentNode->removeChild($parent);
             }
         }
