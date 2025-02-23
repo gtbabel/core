@@ -1340,6 +1340,18 @@ The default configuration is:
             'attribute' => null,
             'context' => 'slug',
             'comment' => 'Sitemap links'
+        ],
+        [
+            'selector' => '//*[name()=\'title\']',
+            'attribute' => null,
+            'context' => null,
+            'comment' => null
+        ],
+        [
+            'selector' => '//*[name()=\'summary\']',
+            'attribute' => null,
+            'context' => null,
+            'comment' => null
         ]
     ],
     'translate_json' => true,
