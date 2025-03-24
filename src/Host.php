@@ -30,11 +30,13 @@ class Host
 
     function getCurrentPathConverted()
     {
+        if(!isset($_SERVER['REQUEST_URI'])) { return ''; }
         return parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     }
 
     function getCurrentPathWithArgsConverted()
     {
+        if(!isset($_SERVER['REQUEST_URI'])) { return ''; }
         return $_SERVER['REQUEST_URI'];
     }
 
@@ -45,6 +47,7 @@ class Host
 
     function getCurrentUrlConverted()
     {
+        if(!isset($_SERVER['HTTP_HOST'])) { return ''; }
         return 'http' .
             (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 's' : '') .
             '://' .
@@ -54,6 +57,7 @@ class Host
 
     function getCurrentUrlWithArgsConverted()
     {
+        if(!isset($_SERVER['HTTP_HOST'])) { return ''; }
         return 'http' .
             (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 's' : '') .
             '://' .
@@ -63,6 +67,7 @@ class Host
 
     function getCurrentHostConverted()
     {
+        if(!isset($_SERVER['HTTP_HOST'])) { return ''; }
         return 'http' .
             (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 's' : '') .
             '://' .
