@@ -69,6 +69,11 @@ class Utils
         return function_exists('get_bloginfo');
     }
 
+    function isCli()
+    {
+        return php_sapi_name() === 'cli';
+    }
+
     function getWordPressPluginFileStorePathRelative()
     {
         return '/' . trim(str_replace($this->getDocRoot(), '', wp_upload_dir()['basedir']), '/') . '/gtbabel';

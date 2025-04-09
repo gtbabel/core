@@ -54,6 +54,9 @@ class Gtbabel
         }
         $this->detectDomChangesBackend();
         $this->frontendEditorBackend();
+        if ($this->utils->isCli()) {
+            return;
+        }
         if ($this->host->contentTranslationIsDisabledForCurrentUrl()) {
             return;
         }
@@ -81,6 +84,9 @@ class Gtbabel
     function stop()
     {
         if ($this->started === false) {
+            return;
+        }
+        if ($this->utils->isCli()) {
             return;
         }
         if ($this->host->contentTranslationIsDisabledForCurrentUrl()) {
